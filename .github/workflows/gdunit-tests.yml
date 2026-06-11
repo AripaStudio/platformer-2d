@@ -1,0 +1,24 @@
+name: Running GDUnit4 Tests
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Run Tests
+        uses: MikeSchulze/gdUnit4-action@v1
+        with:
+          godot-version: "4.7"
+          godot-status: "rc2"
+          paths: "res://tests"
+          timeout: 20
+          retries: 2
+          warnings-as-errors: true
+          arguments: '--verbose'
+          publish-report: ${{ github.event.pull_request.head.repo.full_name == github.repository }}
