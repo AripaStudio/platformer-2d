@@ -4,3 +4,6 @@
 .aider*
 addons/gdUnit4/src/dotnet/GdUnit4CSharpApi.cs.uid
 addons/gdUnit4/src/dotnet/GdUnit4CSharpApi.cs
+addons/gdUnit4/GdUnitRunner.cfg
+*.tmp
+reports/

@@ -2,6 +2,12 @@
 
 [ext_resource type="Script" uid="uid://bixch8jm50agi" path="res://src/characters/player/player.gd" id="1_bxhu7"]
 [ext_resource type="Texture2D" uid="uid://d1lvtg5pie0s7" path="res://icon.svg" id="2_7nd6e"]
+[ext_resource type="Script" uid="uid://b4dp3s7c7lby8" path="res://src/characters/player/StateMachine/state_machine.gd" id="3_hhnms"]
+[ext_resource type="Script" uid="uid://brkthj01i5kvp" path="res://src/characters/player/StateMachine/idle.gd" id="4_qf5tv"]
+[ext_resource type="Script" uid="uid://ds06oa4hybdml" path="res://src/characters/player/StateMachine/walk.gd" id="5_hhaut"]
+[ext_resource type="Script" uid="uid://3l2cjvni2xw7" path="res://src/characters/player/StateMachine/jump.gd" id="6_qf5tv"]
+[ext_resource type="Script" uid="uid://c6adgk7gr82g6" path="res://src/characters/player/StateMachine/dash.gd" id="7_hhaut"]
+[ext_resource type="Script" uid="uid://cfpp0muqem0k2" path="res://src/characters/player/StateMachine/wall_slide.gd" id="8_50u7j"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_j6irt"]
 animations = [{
@@ -58,3 +64,22 @@ autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1370755119]
 shape = SubResource("CapsuleShape2D_j6irt")
+
+[node name="StateMachine" type="Node" parent="." unique_id=1631532311 node_paths=PackedStringArray("initial_state")]
+script = ExtResource("3_hhnms")
+initial_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="StateMachine" unique_id=1638834432]
+script = ExtResource("4_qf5tv")
+
+[node name="Walk" type="Node" parent="StateMachine" unique_id=690236283]
+script = ExtResource("5_hhaut")
+
+[node name="Jump" type="Node" parent="StateMachine" unique_id=1700351684]
+script = ExtResource("6_qf5tv")
+
+[node name="Dash" type="Node" parent="StateMachine" unique_id=576942949]
+script = ExtResource("7_hhaut")
+
+[node name="WallSlide" type="Node" parent="StateMachine" unique_id=1328820144]
+script = ExtResource("8_50u7j")
