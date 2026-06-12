@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://bsh74qqjd8fve"]
+
+[ext_resource type="Script" uid="uid://bixch8jm50agi" path="res://src/characters/player/player.gd" id="1_bxhu7"]
+[ext_resource type="Texture2D" uid="uid://d1lvtg5pie0s7" path="res://icon.svg" id="2_7nd6e"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_j6irt"]
+animations = [{
+"frames": [],
+"loop": 1,
+"name": &"dash",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": 1,
+"name": &"double_jump",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": 1,
+"name": &"fall",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_7nd6e")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": 1,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": 1,
+"name": &"walk",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": 1,
+"name": &"wall_slide",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_j6irt"]
+radius = 67.0
+height = 150.0
+
+[node name="player" type="CharacterBody2D" unique_id=182877893]
+script = ExtResource("1_bxhu7")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1637786609]
+sprite_frames = SubResource("SpriteFrames_j6irt")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1370755119]
+shape = SubResource("CapsuleShape2D_j6irt")
